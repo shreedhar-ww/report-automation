@@ -1,0 +1,6 @@
+{
+    "ConnectionStrings": {
+        "SourceDb": "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=pass;SearchPath=public;Include Error Detail=true",
+        "TargetDb": "Host=localhost;Port=5555;Database=acm_webfocus;Username=dbadmin;Password=.n_AP{Qm{L0>3K%Z;SearchPath=public;"
+    }
+}
