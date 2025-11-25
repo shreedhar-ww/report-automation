@@ -1,6 +1,6 @@
 namespace DbComparisonApp.Models;
 
-public class WorkOrderData
+public class WorkOrderData : IReportData
 {
     public string WorkOrderNumber { get; set; } = string.Empty;
     public string? PostStatus { get; set; }
@@ -34,4 +34,9 @@ public class WorkOrderData
     public string? RiskLevelName { get; set; }
     public string? RiskDescription { get; set; }
     public string? RiskComment { get; set; }
+
+    public string GetUniqueKey()
+    {
+        return WorkOrderNumber;
+    }
 }

@@ -104,6 +104,19 @@ The generated Excel file contains multiple worksheets:
 - Differing cells are highlighted in **red**
 - "DIFFERENT" status indicator for changed fields
 
+### Detailed Comparison Sheet (NEW!)
+- **Stacked record format** - Each record shows DB1 (Source) and DB2 (Target) on consecutive rows
+- **DB1 is the Source of Truth** - Used to validate DB2 data accuracy
+- **Cell-level highlighting** - Only differing fields are highlighted
+- **Color coding:**
+  - 🟢 Green = Matching records
+  - 🔴 Red cells on DB1 = Fields that differ from DB2
+  - 🟠 Orange cells on DB2 = Fields that differ from DB1
+  - 🟡 Yellow = Record in DB1 but missing in DB2
+  - 🔴 Red "MISSING" = Record doesn't exist in target database
+- **Missing records at bottom** - Easy to find records that need synchronization
+- See [DETAILED_COMPARISON_GUIDE.md](DETAILED_COMPARISON_GUIDE.md) for complete usage instructions
+
 ## Query Details
 
 The application executes a complex SQL query that retrieves work order information including:

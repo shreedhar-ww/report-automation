@@ -1,9 +1,9 @@
 namespace DbComparisonApp.Models;
 
-public class ComparisonResult
+public class ComparisonResult<T> where T : IReportData
 {
-    public List<WorkOrderData> MatchingRecords { get; set; } = new();
-    public List<WorkOrderData> OnlyInDb1 { get; set; } = new();
-    public List<WorkOrderData> OnlyInDb2 { get; set; } = new();
-    public List<RecordDifference> RecordsWithDifferences { get; set; } = new();
+    public List<T> MatchingRecords { get; set; } = new();
+    public List<T> OnlyInDb1 { get; set; } = new();
+    public List<T> OnlyInDb2 { get; set; } = new();
+    public List<RecordDifference<T>> RecordsWithDifferences { get; set; } = new();
 }

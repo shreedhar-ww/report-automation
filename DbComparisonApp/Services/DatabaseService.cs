@@ -1,5 +1,6 @@
 using Npgsql;
 using DbComparisonApp.Models;
+using System.Reflection;
 
 namespace DbComparisonApp.Services;
 
@@ -7,7 +8,12 @@ public class DatabaseService
 {
     public async Task<List<WorkOrderData>> ExecuteQueryAsync(string connectionString, string query)
     {
-        var results = new List<WorkOrderData>();
+        return await ExecuteQueryGenericAsync<WorkOrderData>(connectionString, query);
+    }
+
+    public async Task<List<T>> ExecuteQueryGenericAsync<T>(string connectionString, string query) where T : new()
+    {
+        var results = new List<T>();
 
         try
         {
@@ -17,52 +23,54 @@ public class DatabaseService
             await using var command = new NpgsqlCommand(query, connection);
             await using var reader = await command.ExecuteReaderAsync();
 
-            while (await reader.ReadAsync())
-            {
-                var workOrder = new WorkOrderData
-                {
-                    WorkOrderNumber = GetStringValue(reader, "WorkOrderNumber"),
-                    PostStatus = GetStringValue(reader, "PostStatus"),
-                    InductionDayOfPeriod = GetNullableInt(reader, "InductionDayOfPeriod"),
-                    CheckStatus = GetNullableInt(reader, "CheckStatus"),
-                    EventType = GetStringValue(reader, "EventType"),
-                    AirCraft = GetStringValue(reader, "AirCraft"),
-                    AircraftType = GetStringValue(reader, "AircraftType"),
-                    Location = GetStringValue(reader, "Location"),
-                    WorkOrderDescription = GetStringValue(reader, "WorkOrderDescription"),
-                    InductionDate = GetNullableDateTime(reader, "InductionDate"),
-                    EstCompletionDate = GetNullableDateTime(reader, "EstCompletionDate"),
-                    ActualCompletionDate = GetNullableDateTime(reader, "ActualCompletionDate"),
-                    VendorName = GetStringValue(reader, "VendorName"),
-                    SiteManager = GetStringValue(reader, "SiteManager"),
-                    SiteManagerPhone = GetStringValue(reader, "SiteManagerPhone"),
-                    AircraftCheckControlRepresentative = GetStringValue(reader, "AircraftCheckControlRepresentative"),
-                    AircraftCheckControlRepresentativePhone = GetStringValue(reader, "AircraftCheckControlRepresentativePhone"),
-                    GANTTurnAroundTime = GetNullableInt(reader, "GANTTurnAroundTime"),
-                    AgreedTurnAroundTime = GetNullableInt(reader, "AgreedTurnAroundTime"),
-                    RevisedTurnAroundTime = GetNullableInt(reader, "RevisedTurnAroundTime"),
-                    TotalTatChanges = GetNullableLong(reader, "TotalTatChanges"),
-                    LatestComment = GetStringValue(reader, "LatestComment"),
-                    LatestReason = GetStringValue(reader, "LatestReason"),
-                    TotalTasks = GetNullableDecimal(reader, "TotalTasks"),
-                    OpenTasks = GetNullableDecimal(reader, "OpenTasks"),
-                    DayShiftHC = GetNullableDecimal(reader, "DayShiftHC"),
-                    AfternoonShiftHC = GetNullableDecimal(reader, "AfternoonShiftHC"),
-                    NightShiftHC = GetNullableDecimal(reader, "NightShiftHC"),
-                    RiskLevelId = GetNullableInt(reader, "RiskLevelId"),
-                    RiskLevelName = GetStringValue(reader, "RiskLevelName"),
-                    RiskDescription = GetStringValue(reader, "riskdescription"),
-                    RiskComment = GetStringValue(reader, "RiskComment")
-                };
+            var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            var columnMap = new Dictionary<string, PropertyInfo>(StringComparer.OrdinalIgnoreCase);
 
-                results.Add(workOrder);
+            // Map properties to columns
+            foreach (var prop in properties)
+            {
+                columnMap[prop.Name] = prop;
             }
 
-            Console.WriteLine($"Successfully retrieved {results.Count} records from database.");
+            while (await reader.ReadAsync())
+            {
+                var item = new T();
+
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    var columnName = reader.GetName(i);
+                    if (columnMap.TryGetValue(columnName, out var prop))
+                    {
+                        var value = reader.GetValue(i);
+                        if (value != DBNull.Value)
+                        {
+                            // Handle type conversion if needed
+                            var targetType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
+                            
+                            try 
+                            {
+                                if (targetType == typeof(int) && value is long l)
+                                    prop.SetValue(item, (int)l);
+                                else if (targetType == typeof(decimal) && value is double d)
+                                    prop.SetValue(item, (decimal)d);
+                                else
+                                    prop.SetValue(item, Convert.ChangeType(value, targetType));
+                            }
+                            catch
+                            {
+                                // Fallback or ignore if conversion fails
+                            }
+                        }
+                    }
+                }
+                results.Add(item);
+            }
+
+            Console.WriteLine($"Successfully retrieved {results.Count} records for {typeof(T).Name}.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error executing query: {ex.Message}");
+            Console.WriteLine($"Error executing query for {typeof(T).Name}: {ex.Message}");
             throw;
         }
 

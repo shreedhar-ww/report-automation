@@ -1,4 +1,5 @@
 ﻿using DbComparisonApp.Services;
+using DbComparisonApp.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace DbComparisonApp;
@@ -37,32 +38,85 @@ class Program
             Console.WriteLine($"Using date for manpower calculation: {todayDate}\n");
 
             // Initialize services
+            // Initialize services
             var dbService = new DatabaseService();
             var comparisonService = new ComparisonService();
             var excelService = new ExcelReportService();
 
-            // Execute queries on both databases
+            // Create Reports directory
+            var reportsDir = Path.Combine(Directory.GetCurrentDirectory(), "Reports");
+            if (!Directory.Exists(reportsDir))
+            {
+                Directory.CreateDirectory(reportsDir);
+                Console.WriteLine($"Created directory: {reportsDir}");
+            }
+
+            var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+
+            // --- Work Order Report ---
+            Console.WriteLine("--- Starting Work Order Report ---");
             Console.WriteLine("Executing query on Database 1...");
-            var db1Data = await dbService.ExecuteQueryAsync(db1ConnectionString, query);
+            var db1Data = await dbService.ExecuteQueryGenericAsync<WorkOrderData>(db1ConnectionString, query);
 
             Console.WriteLine("Executing query on Database 2...");
-            var db2Data = await dbService.ExecuteQueryAsync(db2ConnectionString, query);
+            var db2Data = await dbService.ExecuteQueryGenericAsync<WorkOrderData>(db2ConnectionString, query);
 
             // Compare data
-            Console.WriteLine("\nComparing data...");
+            Console.WriteLine("\nComparing Work Order data...");
             var comparisonResult = comparisonService.CompareData(db1Data, db2Data);
 
             // Generate Excel report
-            var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-            var outputFileName = configuration["OutputSettings:ExcelFileName"]?
-                .Replace("{timestamp}", timestamp) ?? $"DatabaseComparison_{timestamp}.xlsx";
-            var outputPath = Path.Combine(Directory.GetCurrentDirectory(), outputFileName);
+            var outputFileName = $"WorkOrderReport_{timestamp}.xlsx";
+            var outputPath = Path.Combine(reportsDir, outputFileName);
 
-            Console.WriteLine("\nGenerating Excel report...");
+            Console.WriteLine("\nGenerating Work Order Excel report...");
             excelService.GenerateReport(comparisonResult, outputPath);
+            Console.WriteLine($"Work Order Report saved to: {outputPath}");
+
+            // --- KPI Report ---
+            Console.WriteLine("\n--- Starting KPI Report ---");
+            var kpiQuery = GetKpiQuery(); 
+            
+            Console.WriteLine("Executing KPI query on Database 1...");
+            var db1KpiData = await dbService.ExecuteQueryGenericAsync<KpiReportData>(db1ConnectionString, kpiQuery);
+
+            Console.WriteLine("Executing KPI query on Database 2...");
+            var db2KpiData = await dbService.ExecuteQueryGenericAsync<KpiReportData>(db2ConnectionString, kpiQuery);
+
+            Console.WriteLine("\nComparing KPI data...");
+            var kpiComparisonResult = comparisonService.CompareData(db1KpiData, db2KpiData);
+
+            var kpiOutputFileName = $"KpiReport_{timestamp}.xlsx";
+            var kpiOutputPath = Path.Combine(reportsDir, kpiOutputFileName);
+
+            Console.WriteLine("\nGenerating KPI Excel report...");
+            excelService.GenerateReport(kpiComparisonResult, kpiOutputPath);
+            Console.WriteLine($"KPI Report saved to: {kpiOutputPath}");
+
+            // --- TAT Report ---
+            Console.WriteLine("\n--- Starting TAT Report ---");
+            var tatQuery = GetTatQuery();
+
+            Console.WriteLine("Executing TAT query on Database 1...");
+            var db1TatData = await dbService.ExecuteQueryGenericAsync<TatReportData>(db1ConnectionString, tatQuery);
+
+            Console.WriteLine("Executing TAT query on Database 2...");
+            var db2TatData = await dbService.ExecuteQueryGenericAsync<TatReportData>(db2ConnectionString, tatQuery);
+
+            Console.WriteLine("\nComparing TAT data...");
+            var tatComparisonResult = comparisonService.CompareData(db1TatData, db2TatData);
+
+            var tatOutputFileName = $"TatReport_{timestamp}.xlsx";
+            var tatOutputPath = Path.Combine(reportsDir, tatOutputFileName);
+
+            Console.WriteLine("\nGenerating TAT Excel report...");
+            excelService.GenerateReport(tatComparisonResult, tatOutputPath);
+            Console.WriteLine($"TAT Report saved to: {tatOutputPath}");
 
             Console.WriteLine("\n=== Process Completed Successfully ===");
-            Console.WriteLine($"Report saved to: {outputPath}");
+            Console.WriteLine($"Work Order Report: {outputPath}");
+            Console.WriteLine($"KPI Report: {kpiOutputPath}");
+            Console.WriteLine($"TAT Report: {tatOutputPath}");
         }
         catch (Exception ex)
         {
@@ -177,6 +231,298 @@ WHERE wo.""ScheduleStartDate"" >= '{startDate}'
   AND COALESCE(wo.""EventType"", 'N/A') NOT IN ('EMS', 'OOS', 'PRK', 'HML')
   -- AND wo.""WorkOrderNumber"" = '{workOrderNumber}'
 ORDER BY wo.""VendorName"";
+";
+    }
+
+    static string GetKpiQuery()
+    {
+        return @"
+WITH WorkOrderSummary AS (
+    SELECT
+        WO.""VendorName"" AS ""VendorName"",
+        WO.""Location"" AS ""Station"",
+        EXTRACT(YEAR FROM WO.""ActualCompletionDate"") AS ""Year"",
+        TO_CHAR(WO.""ActualCompletionDate"", 'Mon') AS ""Month"",
+        SUM(WO.""Duration"") AS ""TotalDuration"",
+        COUNT(WO.""WorkOrderNumber"") AS ""TotalWorkOrders"",
+        COALESCE(SUM(OCA.""TotalSavedCost""), 0) AS ""TotalSavedCost"",
+        ROUND(COALESCE(AVG(OTAT.""ContractualInspectionPercentage""), 0), 0) AS ""AvgContractualInspectionPercentage""
+    FROM 
+        public.""WorkOrder"" WO
+    LEFT JOIN 
+        public.""OnsiteCostAvoidance"" OCA
+        ON WO.""WorkOrderNumber"" = OCA.""WorkOrderNumber""
+    LEFT JOIN 
+        public.""OnSiteTurnAroundTime"" OTAT
+        ON WO.""WorkOrderNumber"" = OTAT.""WorkOrderNumber""
+    WHERE
+        WO.""ActualCompletionDate"" BETWEEN TO_DATE('2025/08/01', 'YYYY/MM/DD')
+                                      AND TO_DATE('2025/09/30', 'YYYY/MM/DD')
+        AND WO.""WorkOrderNumber"" <> 'XXXXXXX'
+        AND WO.""PostStatus"" = 'ACTIVE'
+        AND COALESCE(WO.""VendorName"", '') NOT IN (' - NO VENDOR - ')
+        AND COALESCE(WO.""EventReportType"", 'N/A') NOT IN 
+            ('OOS', 'PRK', 'HML', 'EMS', 'AOG', 'EXIT', 'STC', 'RTS')
+    GROUP BY
+        WO.""VendorName"",
+        WO.""Location"",
+        EXTRACT(YEAR FROM WO.""ActualCompletionDate""),
+        TO_CHAR(WO.""ActualCompletionDate"", 'Mon')
+),
+
+QualitySummary AS (
+    SELECT    
+        WO.""VendorName"" AS ""VendorName"",
+        WO.""Location"" AS ""Station"",
+        EXTRACT(YEAR FROM QF.""OccurredAt"") AS ""Year"",
+        TO_CHAR(QF.""OccurredAt"", 'Mon') AS ""Month"",
+
+        COUNT(QF.""QualityFindingId"") FILTER (WHERE QRC.""ReasonCode"" = 'Air Turn Back') AS ""AIRTURNBACKS"",
+        COUNT(QF.""QualityFindingId"") FILTER (WHERE QRC.""ReasonCode"" = 'Quality Escape After RTS') AS ""QUALITYESCAPES"",
+        COUNT(QF.""CARNumber"") FILTER (WHERE QF.""CARNumber"" IS NOT NULL AND QF.""CARNumber"" NOT IN ('null', 'N/A', ' N/A')) AS ""CARSISSUED"",
+        COUNT(QF.""QualityFindingId"") FILTER (WHERE QRC.""ReasonCode"" = 'Aircraft Damaged by MRO') AS ""MRODAMAGEEVENTS"",
+        COUNT(QF.""QualityFindingId"") FILTER (WHERE QRC.""ReasonCode"" = 'Required Inspection Item (RII Level I)') AS ""RII_LEVEL_I"",
+        COUNT(QF.""QualityFindingId"") FILTER (WHERE QRC.""ReasonCode"" = 'Required Inspection Item (RII Level II)') AS ""RII_LEVEL_II""
+    FROM public.""QualityFinding"" QF
+    INNER JOIN public.""WorkOrder"" WO
+        ON QF.""WorkOrderNumber"" = WO.""WorkOrderNumber""
+    LEFT JOIN public.""QualityReasonCode"" QRC
+        ON QF.""QualityReasonCodeId"" = QRC.""id""
+    WHERE 
+        QF.""OccurredAt"" BETWEEN TO_DATE('2025/08/01', 'YYYY/MM/DD') 
+                             AND TO_DATE('2025/09/30', 'YYYY/MM/DD')
+        AND WO.""PostStatus"" = 'ACTIVE'
+        AND WO.""WorkOrderNumber"" <> 'XXXXXXX'
+        AND COALESCE(WO.""VendorName"", '') NOT IN (' - NO VENDOR - ')
+        AND COALESCE(WO.""EventReportType"", 'N/A') NOT IN 
+            ('OOS', 'PRK', 'HML', 'EMS', 'AOG', 'EXIT', 'STC', 'RTS')
+        AND QF.""IsDeleted"" = false
+    GROUP BY 
+        WO.""VendorName"", 
+        WO.""Location"",
+        EXTRACT(YEAR FROM QF.""OccurredAt""),
+        TO_CHAR(QF.""OccurredAt"", 'Mon')
+),
+
+TAT AS (
+    SELECT
+        w.""VendorName"" AS ""VendorName"",
+        w.""Location"" AS ""Station"",
+        EXTRACT(YEAR FROM w.""ActualCompletionDate"") AS ""Year"",
+        TO_CHAR(w.""ActualCompletionDate"", 'Mon') AS ""Month"",
+        ROUND(SUM(COALESCE(d.days,0) + COALESCE(d.hours,0)/24 + COALESCE(d.minutes,0)/1440), 1) AS ""TotalNonExcusableDays"",
+        ROUND(SUM(COALESCE(t.days,0) + COALESCE(t.hours,0)/24 + COALESCE(t.minutes,0)/1440), 1) AS ""TotalExcusableDays""
+    FROM public.""WorkOrder"" w
+    LEFT JOIN LATERAL (
+        SELECT
+            (REGEXP_MATCHES(o.""TotalNonExcusableDays"", '(-?\d+)d'))[1]::NUMERIC AS days,
+            (REGEXP_MATCHES(o.""TotalNonExcusableDays"", '(-?\d+)h'))[1]::NUMERIC AS hours,
+            (REGEXP_MATCHES(o.""TotalNonExcusableDays"", '(-?\d+)m'))[1]::NUMERIC AS minutes
+        FROM public.""OnSiteTurnAroundTime"" o
+        WHERE o.""WorkOrderNumber"" = w.""WorkOrderNumber""
+    ) d ON TRUE
+    LEFT JOIN LATERAL (
+        SELECT
+            (REGEXP_MATCHES(o.""TotalExcusableDays"", '(-?\d+)d'))[1]::NUMERIC AS days,
+            (REGEXP_MATCHES(o.""TotalExcusableDays"", '(-?\d+)h'))[1]::NUMERIC AS hours,
+            (REGEXP_MATCHES(o.""TotalExcusableDays"", '(-?\d+)m'))[1]::NUMERIC AS minutes
+        FROM public.""OnSiteTurnAroundTime"" o
+        WHERE o.""WorkOrderNumber"" = w.""WorkOrderNumber""
+    ) t ON TRUE
+    WHERE
+        w.""ActualCompletionDate"" BETWEEN TO_DATE('2025/08/01', 'YYYY/MM/DD')
+                                     AND TO_DATE('2025/09/30', 'YYYY/MM/DD')
+        AND w.""WorkOrderNumber"" <> 'XXXXXXX'
+        AND w.""PostStatus"" = 'ACTIVE'
+        AND COALESCE(w.""VendorName"", '') NOT IN (' - NO VENDOR - ')
+        AND COALESCE(w.""EventReportType"", 'N/A') NOT IN 
+            ('OOS', 'PRK', 'HML', 'EMS', 'AOG', 'EXIT', 'STC', 'RTS')
+    GROUP BY
+        w.""VendorName"", w.""Location"",
+        EXTRACT(YEAR FROM w.""ActualCompletionDate""), TO_CHAR(w.""ActualCompletionDate"", 'Mon')
+),
+
+TAT_Adjustments AS (
+    SELECT
+        EL.""VendorName"" AS ""VendorName"",
+        EL.""Location"" AS ""Station"",
+        EXTRACT(YEAR FROM EL.""ActualCompletionDate"") AS ""Year"",
+        TO_CHAR(EL.""ActualCompletionDate"", 'Mon') AS ""Month"",
+        COUNT(
+            CASE 
+                WHEN adj.""IsDeleted"" = false 
+                 AND adj.""ChangeDate"" >= EL.""ActualCompletionDate"" - INTERVAL '2 days'
+                 AND rea.""IsGain"" = false
+                THEN adj.""WorkOrderNumber""
+            END
+        ) AS ""TAT_Adjustment_Count""
+    FROM 
+        public.""WorkOrder"" AS EL
+    LEFT JOIN public.""OnSiteTurnAroundTimeAdjustment"" AS adj
+        ON EL.""WorkOrderNumber"" = adj.""WorkOrderNumber""
+    LEFT JOIN public.""OnSiteTurnAroundTimeReason"" AS rea
+        ON adj.""ReasonId"" = rea.""id""
+    WHERE 
+        EL.""ActualCompletionDate"" BETWEEN TO_DATE('2025/08/01', 'YYYY/MM/DD')
+                                      AND TO_DATE('2025/09/30', 'YYYY/MM/DD')
+        AND EL.""WorkOrderNumber"" <> 'XXXXXXX'
+        AND COALESCE(EL.""VendorName"", '') NOT IN (' - NO VENDOR - ')
+        AND COALESCE(EL.""EventReportType"", 'N/A') NOT IN 
+            ('OOS', 'PRK', 'HML', 'EMS', 'AOG', 'EXIT', 'STC', 'RTS')
+    GROUP BY
+        EL.""VendorName"",
+        EL.""Location"",
+        EXTRACT(YEAR FROM EL.""ActualCompletionDate""),
+        TO_CHAR(EL.""ActualCompletionDate"", 'Mon')
+),
+
+LatestKpiPackage AS (
+    SELECT DISTINCT ON (""Vendor"", ""Location"")
+        ""Vendor"",
+        ""Location"" AS ""Station"",
+        ""Level"",
+        ""ChangeDate""
+    FROM public.""KpiPackage""
+    WHERE ""ChangeDate"" IS NOT NULL
+    ORDER BY ""Vendor"", ""Location"", ""ChangeDate"" DESC
+)
+
+SELECT 
+    COALESCE(WS.""VendorName"", QS.""VendorName"", T.""VendorName"", TA.""VendorName"") AS ""VendorName"",
+    COALESCE(WS.""Station"", QS.""Station"", T.""Station"", TA.""Station"") AS ""Station"",
+    COALESCE(WS.""Year"", QS.""Year"", T.""Year"", TA.""Year"") AS ""Year"",
+    COALESCE(WS.""Month"", QS.""Month"", T.""Month"", TA.""Month"") AS ""Month"",
+
+    WS.""TotalDuration"",
+    WS.""TotalWorkOrders"",
+
+    LKP.""Level"" AS ""ACORS_LEVEL"",
+    COALESCE(QS.""AIRTURNBACKS"", 0) AS ""AIRTURNBACKS"",
+    COALESCE(QS.""QUALITYESCAPES"", 0) AS ""QUALITYESCAPES"",
+    COALESCE(QS.""CARSISSUED"", 0) AS ""CARSISSUED"",
+    COALESCE(QS.""MRODAMAGEEVENTS"", 0) AS ""MRODAMAGEEVENTS"",
+    COALESCE(QS.""RII_LEVEL_I"", 0) AS ""RII_LEVEL_I"",
+    COALESCE(QS.""RII_LEVEL_II"", 0) AS ""RII_LEVEL_II"",
+
+    COALESCE(T.""TotalNonExcusableDays"", 0) AS ""TotalNonExcusableDays"",
+    COALESCE(T.""TotalExcusableDays"", 0) AS ""TotalExcusableDays"",
+    COALESCE(TA.""TAT_Adjustment_Count"", 0) AS ""TAT_Adjustment_Count"",
+    WS.""TotalSavedCost"",
+    WS.""AvgContractualInspectionPercentage""
+FROM WorkOrderSummary WS
+FULL OUTER JOIN QualitySummary QS
+   ON WS.""VendorName"" = QS.""VendorName""
+  AND WS.""Station"" = QS.""Station""
+  AND WS.""Year"" = QS.""Year""
+  AND WS.""Month"" = QS.""Month""
+FULL OUTER JOIN TAT T
+   ON COALESCE(WS.""VendorName"", QS.""VendorName"") = T.""VendorName""
+  AND COALESCE(WS.""Station"", QS.""Station"") = T.""Station""
+  AND COALESCE(WS.""Year"", QS.""Year"") = T.""Year""
+  AND COALESCE(WS.""Month"", QS.""Month"") = T.""Month""
+FULL OUTER JOIN TAT_Adjustments TA
+   ON COALESCE(WS.""VendorName"", QS.""VendorName"", T.""VendorName"") = TA.""VendorName""
+  AND COALESCE(WS.""Station"", QS.""Station"", T.""Station"") = TA.""Station""
+  AND COALESCE(WS.""Year"", QS.""Year"", T.""Year"") = TA.""Year""
+  AND COALESCE(WS.""Month"", QS.""Month"", T.""Month"") = TA.""Month""
+LEFT JOIN LatestKpiPackage LKP
+   ON LKP.""Vendor"" = COALESCE(WS.""VendorName"", QS.""VendorName"", T.""VendorName"", TA.""VendorName"")
+  AND LKP.""Station"" = COALESCE(WS.""Station"", QS.""Station"", T.""Station"", TA.""Station"")
+ORDER BY 
+    ""VendorName"",
+    ""Station"",
+    ""Year"";
+";
+    }
+
+    static string GetTatQuery()
+    {
+        return @"
+SELECT 
+    w.""CheckStatus"",
+    w.""WorkOrderNumber"" AS ""WO"",
+    w.""AirCraft"" AS ""FinNumber"",
+    w.""AircraftType"" AS ""Fleet"",
+    w.""WorkOrderDescription"" AS ""AcCheck"",
+
+    -- Concatenated Actual Start DateTime
+    (
+        w.""ActualStartDate""
+        + make_interval(hours => w.""ActualStartHour"", mins => w.""ActualStartMinute"")
+    ) AS ""ActualStartDateTime"",
+    
+    w.""Duration"",
+    tat.""AgreedTurnAroundTime"",
+    a.""Days"",
+    a.""Hours"",
+    a.""Minutes"",
+
+    -- Adjustment sequence number per WorkOrder
+    ROW_NUMBER() OVER (PARTITION BY w.""WorkOrderNumber"" ORDER BY a.""RecordCreatedAt"") AS ""CountEstChanges"",
+
+    w.""VendorCode"",
+    w.""VendorName"",  -- Using VendorName directly from WorkOrder
+    r.""Reason"",
+    r.""IsGain"",
+    tr.""Responsibility"",
+    tr.""ResponsibleId"",
+
+    -- Total in days with IsGain sign
+    ROUND(
+        ((a.""Days"") + (a.""Hours"" / 24.0) + (a.""Minutes"" / 1440.0))
+        * CASE WHEN r.""IsGain"" = true THEN -1 ELSE 1 END, 
+        1
+    ) AS ""TotalDays"",
+
+    -- Executable column
+    ROUND(
+        CASE 
+            WHEN tr.""ResponsibleId"" IN (1,2,4) 
+                THEN ((a.""Days"") + (a.""Hours"" / 24.0) + (a.""Minutes"" / 1440.0))
+                     * CASE WHEN r.""IsGain"" = true THEN -1 ELSE 1 END
+            ELSE 0 
+        END, 1
+    ) AS ""ExecutableDays"",
+
+    -- Non-Executable column
+    ROUND(
+        CASE 
+            WHEN tr.""ResponsibleId"" IN (5,6) 
+                THEN ((a.""Days"") + (a.""Hours"" / 24.0) + (a.""Minutes"" / 1440.0))
+                     * CASE WHEN r.""IsGain"" = true THEN -1 ELSE 1 END
+            ELSE 0 
+        END, 1
+    ) AS ""NonExecutableDays"",
+
+    -- GANT Turn Around Time
+    tat.""GANTTurnAroundTime"",
+
+    a.""ChangeDate"",    
+    a.""Comment"",
+    a.""IsDeleted"", 
+    a.""CreatedBy"",
+    a.""ModifiedBy""
+
+FROM public.""WorkOrder"" w
+LEFT JOIN public.""OnSiteTurnAroundTimeAdjustment"" a 
+       ON a.""WorkOrderNumber"" = w.""WorkOrderNumber""
+LEFT JOIN public.""OnSiteTurnAroundTimeReason"" r
+       ON a.""ReasonId"" = r.id
+LEFT JOIN public.""OnSiteTurnAroundTimeResponsibility"" tr
+       ON a.""ResponsiblePartyId"" = tr.id
+LEFT JOIN public.""OnSiteTurnAroundTime"" tat 
+       ON tat.""WorkOrderNumber"" = w.""WorkOrderNumber""
+
+WHERE   
+    w.""CheckStatus"" = 1
+    AND a.""IsDeleted"" = false
+    AND w.""ActualCompletionDate"" >= TO_DATE('2025/07/04', 'YYYY/MM/DD')
+    AND w.""ActualCompletionDate"" <= TO_DATE('2025/12/20', 'YYYY/MM/DD')
+    AND w.""ExternalReference"" <> 'XXXXXXX'
+    AND w.""PostStatus"" = 'ACTIVE'
+    AND COALESCE(w.""EventReportType"", 'N/A') NOT IN ('OOS','PRK','HML','EMS','AOG','EXIT','STC','RTS')
+
+ORDER BY w.""ExternalReference"", a.""RecordCreatedAt"";
 ";
     }
 }

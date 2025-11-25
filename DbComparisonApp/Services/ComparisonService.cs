@@ -5,18 +5,18 @@ namespace DbComparisonApp.Services;
 
 public class ComparisonService
 {
-    public ComparisonResult CompareData(List<WorkOrderData> db1Data, List<WorkOrderData> db2Data)
+    public ComparisonResult<T> CompareData<T>(List<T> db1Data, List<T> db2Data) where T : IReportData
     {
-        var result = new ComparisonResult();
+        var result = new ComparisonResult<T>();
 
         // Create dictionaries for faster lookup
-        var db1Dict = db1Data.ToDictionary(x => x.WorkOrderNumber);
-        var db2Dict = db2Data.ToDictionary(x => x.WorkOrderNumber);
+        var db1Dict = db1Data.ToDictionary(x => x.GetUniqueKey());
+        var db2Dict = db2Data.ToDictionary(x => x.GetUniqueKey());
 
         // Find records only in DB1
         foreach (var record in db1Data)
         {
-            if (!db2Dict.ContainsKey(record.WorkOrderNumber))
+            if (!db2Dict.ContainsKey(record.GetUniqueKey()))
             {
                 result.OnlyInDb1.Add(record);
             }
@@ -25,7 +25,7 @@ public class ComparisonService
         // Find records only in DB2
         foreach (var record in db2Data)
         {
-            if (!db1Dict.ContainsKey(record.WorkOrderNumber))
+            if (!db1Dict.ContainsKey(record.GetUniqueKey()))
             {
                 result.OnlyInDb2.Add(record);
             }
@@ -34,7 +34,7 @@ public class ComparisonService
         // Find matching records and records with differences
         foreach (var db1Record in db1Data)
         {
-            if (db2Dict.TryGetValue(db1Record.WorkOrderNumber, out var db2Record))
+            if (db2Dict.TryGetValue(db1Record.GetUniqueKey(), out var db2Record))
             {
                 var differingFields = GetDifferingFields(db1Record, db2Record);
 
@@ -46,9 +46,9 @@ public class ComparisonService
                 else
                 {
                     // Records have differences
-                    result.RecordsWithDifferences.Add(new RecordDifference
+                    result.RecordsWithDifferences.Add(new RecordDifference<T>
                     {
-                        WorkOrderNumber = db1Record.WorkOrderNumber,
+                        Key = db1Record.GetUniqueKey(),
                         Db1Record = db1Record,
                         Db2Record = db2Record,
                         DifferingFields = differingFields
@@ -57,7 +57,7 @@ public class ComparisonService
             }
         }
 
-        Console.WriteLine($"\nComparison Summary:");
+        Console.WriteLine($"\nComparison Summary for {typeof(T).Name}:");
         Console.WriteLine($"  Matching Records: {result.MatchingRecords.Count}");
         Console.WriteLine($"  Only in DB1: {result.OnlyInDb1.Count}");
         Console.WriteLine($"  Only in DB2: {result.OnlyInDb2.Count}");
@@ -66,10 +66,10 @@ public class ComparisonService
         return result;
     }
 
-    private List<string> GetDifferingFields(WorkOrderData record1, WorkOrderData record2)
+    private List<string> GetDifferingFields<T>(T record1, T record2)
     {
         var differingFields = new List<string>();
-        var properties = typeof(WorkOrderData).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+        var properties = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
         foreach (var property in properties)
         {

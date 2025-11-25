@@ -1,9 +1,9 @@
 namespace DbComparisonApp.Models;
 
-public class RecordDifference
+public class RecordDifference<T> where T : IReportData
 {
-    public string WorkOrderNumber { get; set; } = string.Empty;
-    public WorkOrderData Db1Record { get; set; } = new();
-    public WorkOrderData Db2Record { get; set; } = new();
+    public string Key { get; set; } = string.Empty;
+    public T Db1Record { get; set; } = default!;
+    public T Db2Record { get; set; } = default!;
     public List<string> DifferingFields { get; set; } = new();
 }
