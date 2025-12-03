@@ -1,0 +1,293 @@
+TAT REPORT,,,,,,,,,,,,,,,,,,,,,
+From: 2025/08/29 To: 2026/02/15  - ALL WO - STATUS: COMPLETED - ALL LOCATIONS - ALL VENDORS,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+"
+
+
+
+","
+
+
+
+STATUS","
+
+
+
+WO","
+
+
+
+FIN#","
+
+
+
+Fleet","
+
+
+
+A/C Check","
+
+
+Induction
+Date Time","
+
+
+
+Planned RTS","
+
+
+
+Revised RTS","
+
+
+
+Actual RTS","
+
+
+Gantt
+TAT","
+
+
+AnnexB
+TAT","
+
+Final
+TAT
+(TRAX)","
+
+
++/- TAT
+(TRAX)","
+
+TAT Change
+Days
+(Rep.)","
+Non-Excusable
+(MRO
+Responsible delays
++improvements)","
+
+Excusable
+(AC &#38; Non-MRO Responsible
+and MRO excusable)","
+
+
+Count
+Est. Changes","Count
+TAT
+delays
+within 48h of
+RTS","
+
+
+
+Reason","
+
+
+
+Comments","
+
+
+
+Modified"
+                2025,,,,,,,,,,,,,,,,,,,,,
+"AMA1 INTERNATIONAL AEROSPACE COATINGS, INC",,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1438751,232,A320,LIVERY,2025/09/06 05:00,2025/09/11 05:00,2025/09/10   20:30,2025/09/10 20:30,5.0,5.0,4.6,-.4,-.4,-.4,.0,1,0,Other,We completed package early on dayshift.,ROBERT RENZI
+BRU1 SABENA AEROSPACE ENGINEERING,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1494739,932,A330,GET WELL,2025/11/01 10:00,2025/11/04 10:00,2025/11/09   22:59,,.0,.0,.0,.0,5.5,5.5,.0,1,1,Late Findings,LATE FINDINGS ENG NO2 O/B THRUST REV REPLACEMENT,Vel Cacic
+,COMPLETED,1494739,932,A330,GET WELL,,,2025/11/08   16:01,2025/11/08 17:00,4.0,3.0,7.3,4.3,-1.3,-1.3,.0,2,0,Other,TEAM WORKED WELL TO ENSURE THRUST REVERSER WAS REPLACED AND AIRCRAFT WAS RTS AHEAD OF SCHEDULED GROUND TIME,Christopher Bentley
+Total:    1494739,,,,,,,,,,4.0,3.0,7.3,4.3,4.3,4.3,.0,2,1,,,
+,COMPLETED,1494741,936,A330,GET WELL,2025/11/11 04:00,2025/11/14 04:00,2025/11/13   13:00,2025/11/13 11:00,4.0,3.0,2.3,-.7,-.6,-.6,.0,1,0,Critical Inspection completed ahead of time,SABENA ENGINEERING TEAM WORKED WELL TOGETHER.,Christopher Bentley
+Total: BRU1 / SABENA AEROSPACE ENGINEERING,,,,,,,,,,8.0,6.0,9.6,3.6,3.6,3.6,.0,3,1,,,
+HKG1 HAECO,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,971536,933,A330,C08 A03-1 CVR,2025/09/07 00:00,2025/09/30 00:00,2025/10/08   12:00,,.0,.0,.0,.0,8.5,.0,8.5,1,0,Material Shortage - Vendor,LH Engine inboard Fan Cowl Hinge Fitting - Late Arrival - DDD 02 Oct,Chun Pong Bryan Cheng
+,COMPLETED,971536,933,A330,C08 A03-1 CVR,,,2025/10/09   12:00,,.0,.0,.0,.0,1.0,.0,1.0,2,0,Material Shortage - Vendor,Late arrival of #1 Engine Fan Cowl Fitting,Chun Pong Bryan Cheng
+,COMPLETED,971536,933,A330,C08 A03-1 CVR,,,2025/10/11   12:00,,.0,.0,.0,.0,2.0,2.0,.0,3,0,Manpower Shortages,High Card Count and missed milestones due to manpower shortages,LOUIS GIROUX
+,COMPLETED,971536,933,A330,C08 A03-1 CVR,,,2025/10/13   21:00,2025/10/13 21:00,25.0,23.0,36.9,13.9,2.4,2.4,.0,4,0,Manpower Shortages,Missed Milestone - Manpower Shortage,LOUIS GIROUX
+Total:     971536,,,,,,,,,,25.0,23.0,36.9,13.9,13.9,4.4,9.5,4,0,,,
+,COMPLETED,1029673,844,B787,C06 A2-2,2025/10/28 00:00,2025/11/10 00:00,,2025/11/12 16:20,16.0,13.0,15.7,2.7,.0,.0,.0,,0,,,
+,COMPLETED,1029675,856,B787,C05,2025/09/03 00:00,2025/09/14 00:00,2025/09/14   03:29,,.0,.0,.0,.0,.1,.0,.1,1,1,Engineering - OEM,EI8-44-10-27060-01 Unable to Verify ACPU2 Versions Populates by PCS Certificate Exchange Test due unexpected password requirement,DALE ZIKMAN
+,COMPLETED,1029675,856,B787,C05,,,2025/09/15   03:29,2025/09/15 03:30,15.0,11.0,12.1,1.1,1.0,.0,1.0,2,0,Other,complete work stoppage for whole day 6 (08 Sept 2025) of Check due Base shutdown because of Typhoon 8 warning.,DALE ZIKMAN
+Total:    1029675,,,,,,,,,,15.0,11.0,12.1,1.1,1.1,.0,1.1,2,1,,,
+,COMPLETED,1059231,838,B787,C07 A4-2,2025/10/12 00:00,2025/10/23 00:00,2025/10/25   06:00,2025/10/25 06:00,14.0,11.0,13.3,2.3,2.3,.0,2.3,1,1,Material Shortage - Vendor,Late parts arrival,PAVLE DJORDJEVIC
+,COMPLETED,1210308,850,B787,C06 A3-2,2025/09/05 00:00,2025/09/18 00:00,2025/09/18   02:15,,.0,.0,.0,.0,.1,.0,.1,1,1,Material Shortage - Air Canada,Waiting for shipment of Pack controller,PETER TSCHUPRUK
+,COMPLETED,1210308,850,B787,C06 A3-2,,,2025/09/20   02:15,,.0,.0,.0,.0,2.0,.0,2.0,2,1,Other,Typhoon Closure,PAVLE DJORDJEVIC
+,COMPLETED,1210308,850,B787,C06 A3-2,,,2025/09/21   02:15,2025/09/21 02:15,16.0,13.0,16.1,3.1,1.0,1.0,.0,3,1,Manpower Shortages,null,PAVLE DJORDJEVIC
+Total:    1210308,,,,,,,,,,16.0,13.0,16.1,3.1,3.1,1.0,2.1,3,3,,,
+,COMPLETED,1356023,950,A330,C01,2025/09/13 00:00,2025/10/01 00:00,2025/10/03   00:00,,.0,.0,.0,.0,2.0,.0,2.0,1,1,Other,Typhoon signal level 10. MRO shut down 19 and 20 Sep.,CANE STOJANOSKI
+,COMPLETED,1356023,950,A330,C01,,,2025/10/17   12:00,,.0,.0,.0,.0,14.5,14.5,.0,2,1,Manpower Shortages,"Insufficient manpower, major milestones missed",CANE STOJANOSKI
+,COMPLETED,1356023,950,A330,C01,,,2025/10/22   12:00,2025/10/22 12:00,25.0,18.0,39.5,21.5,5.0,5.0,.0,3,1,Aircraft Damaged,Eng 1 LH C duct damaged by fall restraint equipment. TR replacement.,CANE STOJANOSKI
+Total:    1356023,,,,,,,,,,25.0,18.0,39.5,21.5,21.5,19.5,2.0,3,3,,,
+,COMPLETED,1452662,802,B787,C08 LDG,2025/09/17 00:00,2025/10/29 00:00,2025/10/30   12:00,,.0,.0,.0,.0,1.5,.0,1.5,1,0,Late Findings,"LATE FINDINGS AND DIFFICULTY IN SOURCING ASSOCIATED PARTS FOR:
+- LH PACK PECs HEAT EXCHANGER - INTERNAL LEAKAGE
+- FLIGHT DECK O2 DISTRIBUTION MANIFOLD - FAULTY FUSES
+NOTE: RISK LEVEL LOWERED TO LEVEL 2 DUE NO ETA ON MANIFOLD DELIVERY TO HAECO.
+VMST AN",DALE ZIKMAN
+,COMPLETED,1452662,802,B787,C08 LDG,,,2025/11/01   14:00,,.0,.0,.0,.0,2.1,.0,2.1,2,0,Material Shortage - Air Canada,Awaiting Delivery of Flight Deck 02 Manifold (late finding item),DALE ZIKMAN
+,COMPLETED,1452662,802,B787,C08 LDG,,,2025/11/02   02:00,,.0,.0,.0,.0,.5,.0,.5,3,1,Other,"RTS extended 12 hrs to 15 Nov, 10:00 hrs due:
+AC844 rob of Spoiler Actuator.
+ETA in HKG of replacement actuator is 14 Nov @ 18:40 hrs.
+In Productions hand for install @ 15 Nov @ 00:00 hrs",DALE ZIKMAN
+,COMPLETED,1452662,802,B787,C08 LDG,,,2025/11/02   04:00,,.0,.0,.0,.0,.1,.0,.1,4,1,Other,RTS extended 2 HRS due CSM data loading failure Trouble Shooting with ACA and Haeco Avionics Engineering. Ground Function Check and Functional Check Flight are not affected by this change.,Michael Gutierrez
+,COMPLETED,1452662,802,B787,C08 LDG,,,2025/11/15   02:00,2025/11/15 03:00,55.0,42.0,59.1,17.1,12.9,12.9,.0,5,1,Manpower Shortages,Numerous MRO adjustments via CMAs,DALE ZIKMAN
+Total:    1452662,,,,,,,,,,55.0,42.0,59.1,17.1,17.1,12.9,4.2,5,3,,,
+,COMPLETED,1483717,837,B787,C07 A3-2,2025/09/26 00:00,2025/10/07 00:00,2025/10/09   00:00,,.0,.0,.0,.0,2.0,2.0,.0,1,1,Manpower Shortages,Droop panle both sides found cracked not enough experiance for 24 hour coverage,Chun Pong Bryan Cheng
+,COMPLETED,1483717,837,B787,C07 A3-2,,,2025/10/09   08:30,2025/10/09 08:30,14.0,11.0,13.4,2.4,.4,.0,.4,2,1,Material Shortage - Air Canada,Several part failures and late parts arrival,PAVLE DJORDJEVIC
+Total:    1483717,,,,,,,,,,14.0,11.0,13.4,2.4,2.4,2.0,.4,2,2,,,
+Total: HKG1 / HAECO,,,,,,,,,,180.0,142.0,206.0,64.0,61.3,39.8,21.5,20,13,,,
+MLB1 STS REPAIR AND MODIFICATION LLC,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1078502,459,A321,AC459 DREAM CABIN SEPT2025 MLB,2025/08/27 16:00,2025/10/26 16:00,2025/10/18   16:00,,.0,.0,.0,.0,-8.0,-8.0,.0,1,0,Other,Project efficiencies related to MRO experience and proficiency.,Nick Demetriou
+,COMPLETED,1078502,459,A321,AC459 DREAM CABIN SEPT2025 MLB,,,2025/10/20   02:30,,.0,.0,.0,.0,1.4,.0,1.4,2,1,Late Findings,Delay due to troubleshooting PAX Seat PED and USB fail in two seat rows.  Required PAX seat replacement.,ERNEST ZAPATA
+,COMPLETED,1078502,459,A321,AC459 DREAM CABIN SEPT2025 MLB,,,2025/10/20   01:00,2025/10/20 01:00,71.0,60.0,53.4,-6.6,-.1,.0,-.1,3,0,Other,RTS pulled in 1.5 hours.,ERNEST ZAPATA
+Total:    1078502,,,,,,,,,,71.0,60.0,53.4,-6.6,-6.6,-8.0,1.4,3,1,,,
+Total: MLB1 / STS REPAIR AND MODIFICATION LLC,,,,,,,,,,71.0,60.0,53.4,-6.6,-6.6,-8.0,1.4,3,1,,,
+RZE1 LOT AIRCRAFT MAINTENANCE SERVICES SP,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1343004,850,B787,NDT,2025/10/08 08:00,2025/10/15 08:00,2025/10/12   12:00,2025/10/12 12:00,7.0,7.0,4.2,-2.8,-2.8,-2.8,.0,1,0,No major findings found,No findings during NDT inspection and early WO 1343004 completion,Ziggy Stanisavljevic
+,COMPLETED,1343005,851,B787,NDT SPV,2025/10/01 08:00,2025/10/08 08:00,2025/10/06   09:00,2025/10/06 09:00,881.0,7.0,5.0,-2.0,-2.0,-2.0,.0,1,0,No major findings found,"Only 1 fitting requiring replacement, very good performance by MRO.",ARTUR GOLBA
+,COMPLETED,1343006,852,B787,NDT SPV,2025/10/15 09:00,2025/10/22 09:00,2025/10/20   15:00,2025/10/20 15:00,10.0,7.0,5.3,-1.8,-1.8,-1.8,.0,1,0,No major findings found,NDT Inspection and rectification completed early (only one finding),Ziggy Stanisavljevic
+,COMPLETED,1343007,853,B787,SPV NDT,2025/10/28 05:00,2025/11/03 05:00,2025/10/31   14:45,2025/10/31 14:45,7.0,6.0,3.4,-2.6,-2.6,-2.6,.0,1,0,No major findings found,"SPV NDT RTS Improved, Check completed with no findings.",Ziggy Stanisavljevic
+,COMPLETED,1343008,854,B787,NDT SPV,2025/11/04 05:00,2025/11/10 05:00,2025/11/09   13:00,2025/11/09 13:00,8.0,6.0,5.3,-.7,-.7,-.7,.0,1,0,No major findings found,Only 2 fittings required replacement.,ARTUR GOLBA
+,COMPLETED,1343012,858,B787,SPV NDT,2025/11/12 05:00,2025/11/16 05:00,2025/11/20   16:00,2025/11/20 16:00,428.0,4.0,8.5,4.5,4.5,.0,4.5,1,1,Work Cards added during check,OMIs added during the check. Late part delivery. MRO could not produce per Annex B TAT but still delivered 7 days earlier than Gantt Chart TAT.,ARTUR GOLBA
+Total: RZE1 / LOT AIRCRAFT MAINTENANCE SERVICES SP,,,,,,,,,,"1,341.0",37.0,31.7,-5.3,-5.3,-9.8,4.5,6,1,,,
+SIN1 ST ENGINEERING  AEROSPACE SERVICES CO PTE LTD,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1213811,704,B777,C06 B01 A01 CVR,2025/11/02 00:00,2025/11/21 00:00,2025/11/20   21:00,2025/11/20 14:08,20.0,19.0,18.6,-.4,-.1,-.1,.0,1,0,Other,TAT 19 DAYS 0500 LT RTS AS AGREED WITH MRO FOR DEPARTURE TIMING.,YengKhoon Lim
+,COMPLETED,1213818,739,B777,B02,2025/10/01 00:00,2025/10/17 00:00,2025/10/16   22:00,,.0,.0,.0,.0,-.1,-.1,.0,1,0,Other,TAT 16 DAYS 0600LT RTS AS AGREED WITH MRO FOR DEPARTURE TIMING,ALI BARISAN
+,COMPLETED,1213818,739,B777,B02,,,2025/10/16   16:35,2025/10/16 16:35,455.0,16.0,15.7,-.3,-.2,-.2,.0,2,0,Other,DUE TO LOW CARD COUNT,ALI BARISAN
+Total:    1213818,,,,,,,,,,455.0,16.0,15.7,-.3,-.3,-.3,.0,2,0,,,
+,COMPLETED,1213826,705,B777,B02,2025/10/15 00:00,2025/10/30 00:00,2025/10/29   21:00,,.0,.0,.0,.0,-.1,-.1,.0,1,0,Other,TAT 15 DAYS 0500 LT RTS AS AGREED WITH MRO FOR DEPARTURE TIMING.,YengKhoon Lim
+,COMPLETED,1213826,705,B777,B02,,,2025/10/29   15:35,2025/10/29 15:35,15.0,15.0,14.6,-.4,-.2,-.2,.0,2,0,Other,LOW CARD COUNT ON RTS,YengKhoon Lim
+Total:    1213826,,,,,,,,,,15.0,15.0,14.6,-.4,-.4,-.4,.0,2,0,,,
+,COMPLETED,1213866,731,B777,B02 1500DAY LDG W-CHK,2025/10/19 00:00,2025/11/13 00:00,2025/11/12   21:00,,.0,.0,.0,.0,-.1,-.1,.0,1,0,Other,TAT 25 DAYS 0500LT RTS AS AGREED WITH MRO FOR DEPARTURE TIMING,ALI BARISAN
+,COMPLETED,1213866,731,B777,B02 1500DAY LDG W-CHK,,,2025/11/12   15:00,2025/11/12 15:00,25.0,25.0,24.6,-.4,-.3,-.3,.0,2,0,Other,DUE TO LOW CARD COUNT.,ZAKARIA MOHD TAIB
+Total:    1213866,,,,,,,,,,25.0,25.0,24.6,-.4,-.4,-.4,.0,2,0,,,
+,COMPLETED,1272897,946,A330,DREAM MOD,2025/09/04 00:00,2025/11/01 00:00,2025/11/06   00:00,,.0,.0,.0,.0,5.0,.0,5.0,1,0,Material Shortage - Air Canada,TAT 5 DAYS RIGHT. LATE ARRIVAL OF SAFRAN GALLEY G9,MINLI CHAN
+,COMPLETED,1272897,946,A330,DREAM MOD,,,2025/11/08   00:00,,.0,.0,.0,.0,2.0,.0,2.0,2,0,Other,TASKCARD CLOSURE PENDING MULTIPLE EARNS FINAL RESOLUTION AND DISCREPANCIES IN CABIN PLACARD INSTALLATION AFFECTING CONFORMITY BUYBACK FOR SAFRAN PROTOTYPE GALLEYS AND MONUMENTS. ESTIMATE TAT SLIDE RIGHT 2 DAYS,Mahendran Logannath
+,COMPLETED,1272897,946,A330,DREAM MOD,,,2025/11/07   14:30,2025/11/07 14:30,48.0,58.0,64.6,6.6,-.4,-.4,.0,3,0,Other,LOW CARD COUNT ON RTS,Mahendran Logannath
+Total:    1272897,,,,,,,,,,48.0,58.0,64.6,6.6,6.6,-.4,7.0,3,0,,,
+Total: SIN1 / ST ENGINEERING  AEROSPACE SERVICES CO PTE LTD,,,,,,,,,,563.0,133.0,138.2,5.2,5.4,-1.6,7.0,10,0,,,
+XXX3  - NO VENDOR -,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1449003,801,B787,PAINT0,2025/09/07 04:00,2025/09/09 18:32,,2025/09/09 18:32,.0,.0,2.6,2.6,.0,.0,.0,,0,,,
+YHM1 KELOWNA FLIGHTCRAFT LTD,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1083887,639,B767,M03 LDG,2025/07/31 11:00,2025/09/02 11:00,2025/09/16   20:00,2025/09/16 20:00,51.0,33.0,47.4,14.4,14.4,.0,14.4,1,1,Engineering - OEM,Waiting on R1 Door repair approval.,JUSTIN KELLY
+,COMPLETED,1221975,637,B767,M01 A04 LDG,2025/09/13 11:00,2025/10/14 11:00,2025/10/12   11:00,,.0,.0,.0,.0,-2.0,.0,-2.0,1,0,Other,Waiting for 660 to arrive to rob the engine to service 637,Gregory Macasevic
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/10/16   11:00,,.0,.0,.0,.0,4.0,4.0,.0,2,0,Late Findings,RTS revised to 04 NOV 2025 @ 23:59 local,Gregory Macasevic
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/10/17   11:00,,.0,.0,.0,.0,1.0,1.0,.0,3,0,Late Findings,"RTS revised to November 5th, 2025 @ 23:59 local",Achilleas Pagounis
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/10/19   11:00,,.0,.0,.0,.0,2.0,.0,2.0,4,0,Late Findings,Fuel leak still is still present. SunAreo in coming to repair fuel leak,Gregory Macasevic
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/10/20   11:00,,.0,.0,.0,.0,1.0,.0,1.0,5,1,Other,FUEL LEAKS FOUND IN ALL THREE TANKS. REPAIRS BEING ACCOMPLISHED OUTDOORS IN INCLEMENT WEATHER REQUIRING EXTRA TIME FOR SEALANT TO CURE,JERRY DEEGAN
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/11/19   03:30,,.0,.0,.0,.0,29.7,29.7,.0,6,1,Other,"Slow progress by MRO, end of check multiple fuel leaks",Mike Verbeek
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/11/17   19:30,,.0,.0,.0,.0,-1.3,.0,-1.3,7,0,Administrative,to align with trax,JERRY DEEGAN
+,COMPLETED,1221975,637,B767,M01 A04 LDG,,,2025/11/10   19:30,2025/11/10 19:30,52.0,31.0,58.4,27.4,-7.0,.0,-7.0,8,0,Administrative,to align with TRAX,JERRY DEEGAN
+Total:    1221975,,,,,,,,,,52.0,31.0,58.4,27.4,27.4,34.7,-7.3,8,2,,,
+,COMPLETED,1510731,126,A220,SPV,2025/08/26 11:00,2025/09/03 11:00,2025/09/08   22:30,2025/09/08 22:30,8.0,8.0,13.5,5.5,5.5,.0,5.5,1,1,Engineering - OEM,Waiting on Airbus repair approval. AT made correction and entered 8d for ANNEX B.,Aarne Tork
+Total: YHM1 / KELOWNA FLIGHTCRAFT LTD,,,,,,,,,,111.0,72.0,119.2,47.2,47.2,34.7,12.5,10,4,,,
+YLW1 KELOWNA FLIGHTCRAFT LTD,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1457944,106,A220,,2025/11/15 21:30,2025/11/19 21:30,2025/11/20   07:59,,.0,.0,.0,.0,.4,.0,.4,1,0,Other,null,JEAN DUTIL
+,COMPLETED,1457944,106,A220,,,,2025/11/19   23:45,2025/11/19 23:45,93.0,4.0,4.1,.1,-.3,-.3,.0,2,0,Extra manpower added to the check,Better performance then expected.,JEAN DUTIL
+Total:    1457944,,,,,,,,,,93.0,4.0,4.1,.1,.1,-.3,.4,2,0,,,
+,COMPLETED,1457959,105,A220,AC105 NOV2025 YLW,2025/11/10 19:30,2025/11/15 19:30,2025/11/15   23:59,,.0,.0,.0,.0,.2,.0,.2,1,0,Other,Additional Tasks added to FFSPV requiring Power on Vs Fuel Event is Power Off,JEAN DUTIL
+,COMPLETED,1457959,105,A220,AC105 NOV2025 YLW,,,2025/11/15   07:59,,.0,.0,.0,.0,-.7,-.7,.0,2,0,Extra manpower added to the check,All parts onsite. Extra manpower added to the check.,JEAN DUTIL
+,COMPLETED,1457959,105,A220,AC105 NOV2025 YLW,,,2025/11/14   21:30,2025/11/14 21:30,4.0,5.0,4.1,-.9,-.4,-.4,.0,3,0,Extra manpower added to the check,Better Performance then expected,JEAN DUTIL
+Total:    1457959,,,,,,,,,,4.0,5.0,4.1,-.9,-.9,-1.1,.2,3,0,,,
+,COMPLETED,1483654,122,A220,SPV,2025/09/27 19:00,2025/09/29 19:00,2025/09/28   19:00,,.0,.0,.0,.0,-1.0,-1.0,.0,1,0,Other,Wing leading edge repairs completed before estimated date,Eric Juzwishyn
+,COMPLETED,1483654,122,A220,SPV,,,2025/10/01   19:00,,.0,.0,.0,.0,3.0,.0,3.0,2,0,Other,DUE TO 14 WING FIXED LEADING EDGE REPAIRS. 5 MAJOR ENGINEERING REPAIRS IN PROGRESS. LAST REPAIR RECEIVED FROM ABC AT END OF SHIFT TODAY.,Eric Juzwishyn
+,COMPLETED,1483654,122,A220,SPV,,,2025/10/09   23:00,,.0,.0,.0,.0,8.2,.0,8.2,3,0,Other,14 Cracks noted during inspection on LH and RH wing fixed leading edges. Airbus engineering will be required at 5 locations.,KENNY HACKETT
+,COMPLETED,1483654,122,A220,SPV,,,2025/10/08   23:00,2025/10/08 19:00,9.0,2.0,11.0,9.0,-1.0,-1.0,.0,4,0,Other,MRO Closed work package ahead of estimate,Eric Juzwishyn
+Total:    1483654,,,,,,,,,,9.0,2.0,11.0,9.0,9.2,-2.0,11.2,4,0,,,
+,COMPLETED,1489534,120,A220,SPV,2025/08/28 07:00,2025/08/30 07:00,2025/08/29   07:00,,.0,.0,.0,.0,-1.0,-1.0,.0,1,0,Other,Wing leading edge repairs progressing ahead of schedule,Eric Juzwishyn
+,COMPLETED,1489534,120,A220,SPV,,,2025/09/04   17:00,2025/09/04 17:00,8.0,2.0,7.4,5.4,6.4,.0,6.4,2,0,Other,10 cracks noted to LH and RH wing fixed leading edges. 3 areas noted to be outside of established limits Airbus repair dispositions will be required.,KENNY HACKETT
+Total:    1489534,,,,,,,,,,8.0,2.0,7.4,5.4,5.4,-1.0,6.4,2,0,,,
+,COMPLETED,1489535,106,A220,SPV,2025/09/14 18:00,2025/09/16 18:00,2025/09/15   18:00,,.0,.0,.0,.0,-1.0,-1.0,.0,1,0,Other,"Major repairs completed ahead of estimated time. Late finding of leaking #1 VFG rectified with seal replacement and 2nd shift was able to complete without affecting wing repairs,",Eric Juzwishyn
+,COMPLETED,1489535,106,A220,SPV,,,2025/09/19   18:00,,.0,.0,.0,.0,4.0,.0,4.0,2,0,Engineering - OEM,Engineering repairs received 2025/09/19. MRO reflow to September 27 @ 16:00 L / 23:00 Z to accomplish repairs,Eric Juzwishyn
+,COMPLETED,1489535,106,A220,SPV,,,2025/09/27   00:00,2025/09/26 23:58,10.0,2.0,12.2,10.2,7.3,.0,7.3,3,1,Other,16 cracks noted to fixed LH and RH wing leading edges. 6 of which will require engineering repairs,KENNY HACKETT
+Total:    1489535,,,,,,,,,,10.0,2.0,12.2,10.2,10.3,-1.0,11.3,3,1,,,
+,COMPLETED,1489544,129,A220,SPV,2025/09/05 18:00,2025/09/07 18:00,2025/09/07   16:00,,.0,.0,.0,.0,-.1,-.1,.0,1,0,Administrative,Paperwork completed ahead of schedule,Eric Juzwishyn
+,COMPLETED,1489544,129,A220,SPV,,,2025/09/13   16:00,2025/09/13 16:00,8.0,2.0,7.9,5.9,6.0,.0,6.0,2,1,Other,5 cracks noted on wing fixed leading edges. Airbus engineering will be required.,KENNY HACKETT
+Total:    1489544,,,,,,,,,,8.0,2.0,7.9,5.9,5.9,-.1,6.0,2,1,,,
+,COMPLETED,1506991,103,A220,FFSPV,2025/11/01 18:00,2025/11/05 18:00,2025/11/05   18:01,2025/11/05 05:30,4.0,4.0,3.5,-.5,.0,.0,.0,1,1,Other,VMST Adjustment  to 4 Days TAT per Annex B,JEAN DUTIL
+,COMPLETED,1506992,124,A220,FFSPV,2025/11/05 19:00,2025/11/09 19:00,2025/11/10   19:00,,.0,.0,.0,.0,1.0,1.0,.0,1,1,Other,Fuel imbalance defect during post fuel feed inspection runs.Require time to troubleshoot and rectify,Eric Juzwishyn
+,COMPLETED,1506992,124,A220,FFSPV,,,2025/11/09   22:45,2025/11/09 22:45,4.0,4.0,4.2,.2,-.8,-.8,.0,2,0,Extra manpower added to the check,Fault isolated Fuel System re-Tested Serviceable following FIM procedures,Eric Juzwishyn
+Total:    1506992,,,,,,,,,,4.0,4.0,4.2,.2,.2,.2,.0,2,1,,,
+Total: YLW1 / KELOWNA FLIGHTCRAFT LTD,,,,,,,,,,140.0,25.0,54.4,29.4,30.1,-5.4,35.5,19,4,,,
+YMX1 AVIANOR INC.,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,966230,115,A220,C02 A04,2025/07/22 13:00,2025/09/21 13:00,2025/10/02   04:00,,.0,.0,.0,.0,10.6,10.6,.0,1,0,Manpower Shortages,All critical Parts and TRs on site,ANDERS LUNDGREN
+,COMPLETED,966230,115,A220,C02 A04,,,2025/10/03   22:01,,.0,.0,.0,.0,1.8,1.8,.0,2,0,Other,"Delay, Low Manpower, high card counts.",Pedro Abreu
+,COMPLETED,966230,115,A220,C02 A04,,,2025/10/05   04:00,,.0,.0,.0,.0,1.2,1.2,.0,3,1,Late Findings,"unable to reset flap fault, high card count.",Pedro Abreu
+,COMPLETED,966230,115,A220,C02 A04,,,2025/10/07   04:00,,.0,.0,.0,.0,2.0,2.0,.0,4,0,Manpower Shortages,delay into final testing,ANDERS LUNDGREN
+,COMPLETED,966230,115,A220,C02 A04,,,2025/10/07   20:00,,.0,.0,.0,.0,.7,.7,.0,5,1,Manpower Shortages,"Outstanding work,Final paperwork and Aircraft release",ANDERS LUNDGREN
+,COMPLETED,966230,115,A220,C02 A04,,,2025/10/07   15:00,2025/10/07 15:00,82.0,61.0,77.1,16.1,-.2,.0,-.2,6,0,Other,work pack closed ahead of latest estimate.,Pedro Abreu
+Total:     966230,,,,,,,,,,82.0,61.0,77.1,16.1,16.1,16.3,-.2,6,2,,,
+,COMPLETED,971827,117,A220,C02,2025/09/20 10:00,2025/11/09 10:00,2025/11/28   05:00,,.0,.0,.0,.0,18.8,.0,18.8,1,0,Material Shortage - Air Canada,Late arrival of 3 T/Rs from M1,ANDERS LUNDGREN
+,COMPLETED,971827,117,A220,C02,,,2025/11/26   18:01,,.0,.0,.0,.0,-1.5,-1.5,.0,2,0,No major findings found,grd run done with NFF and no issue during package closing,SYLVAIN DESMARTEAUX
+,COMPLETED,971827,117,A220,C02,,,2025/11/26   15:31,2025/11/26 15:30,62.0,50.0,67.2,17.2,-.1,-.1,.0,3,0,Other,better time then estimated for the release,MICHEL LEGAULT
+Total:     971827,,,,,,,,,,62.0,50.0,67.2,17.2,17.2,-1.6,18.8,3,0,,,
+,COMPLETED,1086705,133,A220,C01,2025/09/04 12:45,2025/10/10 12:45,2025/10/27   06:46,,.0,.0,.0,.0,16.8,16.8,.0,1,0,Material Shortage - Vendor,Due to late part delivery from venders and missed milestones,SIMON O'HAGAN
+,COMPLETED,1086705,133,A220,C01,,,2025/10/31   12:45,,.0,.0,.0,.0,4.2,4.2,.0,2,0,Other,HIGH CARD COUNT / MISSED MILESTONES,Carino Andrade
+,COMPLETED,1086705,133,A220,C01,,,2025/10/30   23:46,,.0,.0,.0,.0,-.5,-.5,.0,3,0,No major findings found,null,Robert Manti
+,COMPLETED,1086705,133,A220,C01,,,2025/10/31   12:45,,.0,.0,.0,.0,.5,.0,.5,4,1,Other,APU Harness replacment  awaiting parts from ACB line pull.,SIMON O'HAGAN
+,COMPLETED,1086705,133,A220,C01,,,2025/10/31   08:36,2025/10/30 23:50,36.0,36.0,56.5,20.5,-.2,-.2,.0,5,0,All parts on time vs milestone,"APU repair better than expected, part arrival and installation ahead of schedule",Robert Manti
+Total:    1086705,,,,,,,,,,36.0,36.0,56.5,20.5,20.8,20.3,.5,5,1,,,
+Total: YMX1 / AVIANOR INC.,,,,,,,,,,180.0,147.0,200.8,53.8,54.1,35.0,19.1,14,3,,,
+YMX4 AVIANOR INC.,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1213026,138,A220,PSM,2025/08/30 10:00,2025/09/10 10:00,2025/09/10   03:00,2025/09/10 03:00,12.0,11.0,10.7,-.3,-.3,.0,-.3,1,0,Administrative,Final TAT Adjustment,ANDERS LUNDGREN
+,COMPLETED,1334232,139,A220,PSM,2025/09/25 11:00,2025/10/06 11:00,2025/10/01   01:01,,.0,.0,.0,.0,-5.4,-5.4,.0,1,0,Other,MRO completed Work ahead of schedule,Pedro Abreu
+,COMPLETED,1334232,139,A220,PSM,,,2025/09/30   18:01,2025/09/30 18:00,12.0,11.0,5.3,-5.7,-.3,-.3,.0,2,0,Administrative,Final TAT adjustment,ANDERS LUNDGREN
+Total:    1334232,,,,,,,,,,12.0,11.0,5.3,-5.7,-5.7,-5.7,.0,2,0,,,
+,COMPLETED,1334233,140,A220,PSM,2025/11/14 11:00,2025/11/25 11:00,2025/11/22   02:01,,.0,.0,.0,.0,-3.4,-3.4,.0,1,0,Other,work progress better than expected,Carino Andrade
+,COMPLETED,1334233,140,A220,PSM,,,2025/11/21   17:01,,.0,.0,.0,.0,-.4,-.4,.0,2,0,Other,"CMS upload database was successful, ENG run no faults.",Carino Andrade
+,COMPLETED,1334233,140,A220,PSM,,,2025/11/21   08:01,2025/11/21 14:00,305.0,11.0,7.1,-3.9,-.4,-.4,.0,3,0,Other,RTS performed at 14UTC,Pedro Abreu
+Total:    1334233,,,,,,,,,,305.0,11.0,7.1,-3.9,-4.1,-4.1,.0,3,0,,,
+Total: YMX4 / AVIANOR INC.,,,,,,,,,,329.0,33.0,23.1,-9.9,-10.1,-9.8,-.3,6,0,,,
+YQG1 AAR AIRCRAFT SERVICES - WINDSOR ULC,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1107814,520,B737,C05,2025/08/23 12:30,2025/09/01 12:30,2025/09/03   01:30,2025/09/03 01:30,11.0,9.0,10.5,1.5,1.5,.0,1.5,1,1,Work Cards added during check,Paint found missing on R/H elevator. SB737-55-1107-02 for paint and weight and balance was added.,CURRIE AULD
+,COMPLETED,1107815,521,B737,C05 A02,2025/09/13 11:00,2025/09/22 11:00,2025/09/24   11:00,,.0,.0,.0,.0,2.0,.0,2.0,1,1,Material Shortage - Air Canada,Incoming defect - Rudder FWD Quadrant (Capt) replacement (parts provided at the end of Check),Dany Vanier
+,COMPLETED,1107815,521,B737,C05 A02,,,2025/09/24   03:30,2025/09/24 03:30,11.0,9.0,10.7,1.7,-.3,-.3,.0,2,0,Other,MRO able to close package out earlier than forcast.,CURRIE AULD
+Total:    1107815,,,,,,,,,,11.0,9.0,10.7,1.7,1.7,-.3,2.0,2,1,,,
+,COMPLETED,1107816,519,B737,C05,2025/09/03 11:00,2025/09/13 11:00,2025/09/13   14:00,,.0,.0,.0,.0,.1,.0,.1,1,1,Other,part received from AC was found unserviceable after installation.,Dany Vanier
+,COMPLETED,1107816,519,B737,C05,,,2025/09/13   13:15,2025/09/13 13:15,12.0,10.0,10.1,.1,.0,.0,.0,2,0,Other,Quick swap of the emergency battery,BRIAN HOWARD
+Total:    1107816,,,,,,,,,,12.0,10.0,10.1,.1,.1,.0,.1,2,1,,,
+,COMPLETED,1107817,522,B737,C05 A01,2025/11/02 12:00,2025/11/12 12:00,2025/11/13   07:40,2025/11/13 07:40,11.0,10.0,10.8,.8,.8,.0,.8,1,1,Other,MRO able to complete elevator paint and weight and balance ahead of schedule.,CURRIE AULD
+,COMPLETED,1107818,523,B737,C05 A04,2025/10/13 11:00,2025/10/23 11:00,2025/10/24   23:30,2025/10/24 23:30,11.0,10.0,11.5,1.5,1.5,.0,1.5,1,1,Other,"Time added due to findings on the LH and RH elevator paint requiring removal, repaint and weight and balance.",CURRIE AULD
+,COMPLETED,1107820,537,B737,C03 A04,2025/09/24 11:00,2025/10/04 11:00,2025/10/04   04:00,2025/10/04 03:59,12.0,10.0,9.7,-.3,-.3,-.3,.0,1,0,Administrative,COMPLETED PRIOR TO ORIGINAL RTS,PAUL BLUCHIER
+,COMPLETED,1107821,538,B737,C03,2025/10/04 11:00,2025/10/13 11:00,2025/10/13   00:45,2025/10/13 00:45,12.0,9.0,8.6,-.4,-.4,-.4,.0,1,0,No major findings found,Good progress made by the MRO.,CURRIE AULD
+,COMPLETED,1107822,526,B737,C03 A04,2025/11/13 12:00,2025/11/22 12:00,2025/11/23   04:24,2025/11/23 04:25,305.0,9.0,9.7,.7,.7,.0,.7,1,1,Major Findings,LH Elevator paint missing,Hans De Bruijn
+,COMPLETED,1387467,571,B737,C01 A02,2025/10/25 11:00,2025/11/02 11:00,2025/11/02   00:58,2025/11/02 00:58,11.0,8.0,7.6,-.4,-.4,-.4,.0,1,0,No major findings found,No findings on elevator paint inspection.,CURRIE AULD
+,COMPLETED,1478947,483,A321,C9  ELEVATOR,2025/09/02 12:00,2025/10/02 12:00,2025/10/03   11:00,,.0,.0,.0,.0,1.0,.0,1.0,1,1,Late Findings,ETA of required AOG parts is not expected until after scheduled RTS date.,CURRIE AULD
+,COMPLETED,1478947,483,A321,C9  ELEVATOR,,,2025/10/02   19:30,2025/10/02 19:30,36.0,30.0,30.3,.3,-.6,-.6,.0,2,0,Administrative,MRO Completed ahead of revised schedule,PAUL BLUCHIER
+Total:    1478947,,,,,,,,,,36.0,30.0,30.3,.3,.3,-.6,1.0,2,1,,,
+,COMPLETED,1481490,239,A320,C15,2025/10/04 19:00,2025/11/10 19:00,2025/11/16   16:59,2025/11/16 16:59,36.0,37.0,42.9,5.9,5.9,5.9,.0,1,1,Major Findings,"Spigot fitting corrosion was found (delay in receiving parts)
+TR repairs required due to miss drill, incoming aircraft was robbed.",Hans De Bruijn
+Total: YQG1 / AAR AIRCRAFT SERVICES - WINDSOR ULC,,,,,,,,,,468.0,151.0,162.4,11.4,11.4,3.8,7.6,14,8,,,
+YRQ1  - NO VENDOR -,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1157643,471,A321,C7,2025/10/06 04:00,2025/10/06 23:59,,2025/10/06 23:59,22.0,.0,.8,.8,.0,.0,.0,,0,,,
+YRQ1 AAR AIRCRAFT SERVICES - TROIS RIVIERES ULC,,,,,,,,,,,,,,,,,,,,,
+,COMPLETED,1157633,470,A321,C7 A03 ELEV A57N025,2025/10/31 12:00,2025/11/18 12:00,2025/11/20   12:00,,.0,.0,.0,.0,2.0,.0,2.0,1,0,Material Shortage - Vendor,"Spigot Nuts QTY 2, P/N:R5724483020000 Late arrival From Airbus (AAR Owner)
+FWD Cargo Vertical fitting QTY: 3, P/N:D5391116920001 Late arrival from Airbus (AAR Owner)
+ETA of the parts is Nov 17 2025.",Douglas Lopez
+,COMPLETED,1157633,470,A321,C7 A03 ELEV A57N025,,,2025/11/20   00:00,2025/11/20 01:00,22.0,18.0,19.5,1.5,-.5,-.5,.0,2,0,No major findings found,null,PETER TSCHUPRUK
+Total:    1157633,,,,,,,,,,22.0,18.0,19.5,1.5,1.5,-.5,2.0,2,0,,,
+,COMPLETED,1233560,454,A321,C16 A01 A57N025 FR68 PYLON INS,2025/08/27 11:00,2025/10/27 11:00,2025/10/23   11:00,,.0,.0,.0,.0,-4.0,-4.0,.0,1,0,All parts on time vs milestone,"Visit going better than expected, good performance from the MRO.",ERIC LEBLANC
+,COMPLETED,1233560,454,A321,C16 A01 A57N025 FR68 PYLON INS,,,2025/10/22   23:30,2025/10/22 23:30,61.0,61.0,56.5,-4.5,-.5,-.5,.0,2,0,Administrative,Adjustment of the hrs following the RTS.,ERIC LEBLANC
+Total:    1233560,,,,,,,,,,61.0,61.0,56.5,-4.5,-4.5,-4.5,.0,2,0,,,
+,COMPLETED,1233562,235,A320,C16 A02,2025/09/01 11:00,2025/10/27 11:00,2025/10/28   23:00,,.0,.0,.0,.0,1.5,.0,1.5,1,0,Engineering - OEM,LH/RH  Inboard/Outboard Flap lug bearing corrosion Airbus engineering communication took more time than expected to answer.,SYLVAIN BRODEUR
+,COMPLETED,1233562,235,A320,C16 A02,,,2025/10/30   11:00,,.0,.0,.0,.0,1.5,1.5,.0,2,0,Manpower Shortages,AAR was a bit late completing the inspection related to Flap dossier with Airbus.,SYLVAIN BRODEUR
+,COMPLETED,1233562,235,A320,C16 A02,,,2025/10/31   11:00,,.0,.0,.0,.0,1.0,.0,1.0,3,0,Late Findings,"During aircraft visit, engine replaced. During engine tests, Engine #2 failed tests + ECAM fault. Troubleshooting + component replacement required including HMU + HPTACC.",Dany Vanier
+,COMPLETED,1233562,235,A320,C16 A02,,,2025/11/01   11:00,,.0,.0,.0,.0,1.0,.0,1.0,4,1,Late Findings,During engine run new FLT/CTL fault and R/H Engine B IGN fault. More T/S required.,Harold Dixon
+,COMPLETED,1233562,235,A320,C16 A02,,,2025/10/31   19:00,2025/10/31 19:00,56.0,56.0,60.3,4.3,-.7,.0,-.7,5,0,Administrative,Final check and WO package closed with no issue,JEAN-FRANCOIS LACHANCE
+Total:    1233562,,,,,,,,,,56.0,56.0,60.3,4.3,4.3,1.5,2.8,5,1,,,
+,COMPLETED,1386826,283,A319,ELEV A57N025,2025/10/28 11:00,2025/10/31 11:00,2025/10/31   03:30,2025/10/31 03:30,4.0,3.0,2.7,-.3,-.3,-.3,.0,1,0,Administrative,To align Current TAT (Trax) with Revised TAT,Douglas Lopez
+,COMPLETED,1472854,482,A321,C05 A02 TAURUS,2025/08/14 11:00,2025/09/01 11:00,2025/09/01   05:14,,.0,.0,.0,.0,-.2,-.2,.0,1,0,Administrative,No issue during Finals and package closing,SYLVAIN BRODEUR
+,COMPLETED,1472854,482,A321,C05 A02 TAURUS,,,2025/09/05   05:14,2025/09/05 05:15,23.0,18.0,21.8,3.8,4.0,.0,4.0,2,0,Late Findings,LHT need to replace the accessory gear box on eng #2.,SYLVAIN BRODEUR
+Total:    1472854,,,,,,,,,,23.0,18.0,21.8,3.8,3.8,-.2,4.0,2,0,,,
+,COMPLETED,1472855,422,A320,C13 LDG FR68 CVR,2025/08/13 11:00,2025/09/07 11:00,2025/09/06   22:00,2025/09/06 22:00,26.0,25.0,24.5,-.5,-.5,-.5,.0,1,0,No major findings found,null,LUC MASSE
+,COMPLETED,1478948,484,A321,C9 WNTR A57N025,2025/09/07 11:00,2025/09/27 11:00,2025/09/28   11:00,,.0,.0,.0,.0,1.0,.0,1.0,1,0,Other,Winter Mod take longer than expected.,ERIC LEBLANC
+,COMPLETED,1478948,484,A321,C9 WNTR A57N025,,,2025/09/28   05:00,2025/09/28 05:00,27.0,20.0,20.8,.8,-.3,.0,-.3,2,0,Administrative,Adjusted with real RTS date and time,SYLVAIN BRODEUR
+Total:    1478948,,,,,,,,,,27.0,20.0,20.8,.8,.8,.0,.8,2,0,,,
+,COMPLETED,1481822,247,A320,C12 A01,2025/09/05 11:00,2025/10/22 11:00,2025/10/27   11:00,,.0,.0,.0,.0,5.0,.0,5.0,1,0,Engineering - OEM,Finalize fitting repair at frame 68 upon answer from Airbus Engineering.,ERIC LEBLANC
+,COMPLETED,1481822,247,A320,C12 A01,,,2025/10/28   11:00,,.0,.0,.0,.0,1.0,1.0,.0,2,1,Late Findings,"One day added due high card count, missed milestone, L/H wing fence damage and FADEC fault.",LUC MASSE
+,COMPLETED,1481822,247,A320,C12 A01,,,2025/10/28   06:45,2025/10/28 06:45,48.0,47.0,52.8,5.8,-.2,.0,-.2,3,0,Administrative,To align current TAT (Trax)  with revised TAT,Douglas Lopez
+Total:    1481822,,,,,,,,,,48.0,47.0,52.8,5.8,5.8,1.0,4.8,3,1,,,
+Total: YRQ1 / AAR AIRCRAFT SERVICES - TROIS RIVIERES ULC,,,,,,,,,,267.0,248.0,258.9,10.9,10.8,-3.6,14.4,18,2,,,
+TOTAL,,,,,,,,,,"3,685.0","1,059.0","1,265.7",206.7,201.6,78.4,123.2,124,37,,,
+,,,,,,,,,,,,,,,,,,,,,
+"Prepared on Nov 27, 2025 07.44.52",,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,

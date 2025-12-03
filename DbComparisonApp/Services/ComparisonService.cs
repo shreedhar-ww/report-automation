@@ -1,4 +1,5 @@
 using DbComparisonApp.Models;
+using DbComparisonApp.Attributes;
 using System.Reflection;
 
 namespace DbComparisonApp.Services;
@@ -73,6 +74,12 @@ public class ComparisonService
 
         foreach (var property in properties)
         {
+            // Check for CompareIgnore attribute
+            if (property.GetCustomAttribute<CompareIgnoreAttribute>() != null)
+            {
+                continue;
+            }
+
             var value1 = property.GetValue(record1);
             var value2 = property.GetValue(record2);
 

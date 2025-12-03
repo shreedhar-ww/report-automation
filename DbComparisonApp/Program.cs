@@ -1,5 +1,6 @@
 ﻿using DbComparisonApp.Services;
 using DbComparisonApp.Models;
+using DbComparisonApp.Helpers;
 using Microsoft.Extensions.Configuration;
 
 namespace DbComparisonApp;
@@ -114,33 +115,127 @@ class Program
             Console.WriteLine($"TAT Report saved to: {tatOutputPath}");
 
             // --- Onsite Report ---
-            Console.WriteLine("\n--- Starting Onsite Report ---");
-            var onsiteStartDate = configuration["QueryParameters:Onsite:StartDate"] ?? "2025-07-26";
-            var onsiteEndDate = configuration["QueryParameters:Onsite:EndDate"] ?? "2026-01-12";
-            var onsiteExclude = configuration["QueryParameters:Onsite:ExcludeWorkOrderNumber"] ?? "0";
-            var onsiteQuery = GetOnsiteQuery(onsiteStartDate, onsiteEndDate, onsiteExclude);
+            Console.WriteLine("\n--- Starting KpiMaster Report ---");
+            var kpiMasterStartDate = configuration["QueryParameters:KpiMaster:StartDate"] ?? "2025-07-26";
+            var kpiMasterEndDate = configuration["QueryParameters:KpiMaster:EndDate"] ?? "2026-01-12";
+            var kpiMasterExclude = configuration["QueryParameters:KpiMaster:ExcludeWorkOrderNumber"] ?? "0";
+            var kpiMasterQuery = OnsiteQueryHelper.GetQuery(kpiMasterStartDate, kpiMasterEndDate, kpiMasterExclude);
 
-            Console.WriteLine("Executing Onsite query on Database 1...");
-            var db1OnsiteData = await dbService.ExecuteQueryGenericAsync<OnsiteReportData>(db1ConnectionString, onsiteQuery);
+            Console.WriteLine("Executing KpiMaster query on Database 1...");
+            var db1KpiMasterData = await dbService.ExecuteQueryGenericAsync<OnsiteReportData>(db1ConnectionString, kpiMasterQuery);
 
-            Console.WriteLine("Executing Onsite query on Database 2...");
-            var db2OnsiteData = await dbService.ExecuteQueryGenericAsync<OnsiteReportData>(db2ConnectionString, onsiteQuery);
+            Console.WriteLine("Executing KpiMaster query on Database 2...");
+            var db2KpiMasterData = await dbService.ExecuteQueryGenericAsync<OnsiteReportData>(db2ConnectionString, kpiMasterQuery);
 
-            Console.WriteLine("\nComparing Onsite data...");
-            var onsiteComparisonResult = comparisonService.CompareData(db1OnsiteData, db2OnsiteData);
+            Console.WriteLine("\nComparing KpiMaster data...");
+            var kpiMasterComparisonResult = comparisonService.CompareData(db1KpiMasterData, db2KpiMasterData);
 
-            var onsiteOutputFileName = $"OnsiteReport_{timestamp}.xlsx";
-            var onsiteOutputPath = Path.Combine(reportsDir, onsiteOutputFileName);
+            var kpiMasterOutputFileName = $"KpiMasterReport_{timestamp}.xlsx";
+            var kpiMasterOutputPath = Path.Combine(reportsDir, kpiMasterOutputFileName);
 
-            Console.WriteLine("\nGenerating Onsite Excel report...");
-            excelService.GenerateReport(onsiteComparisonResult, onsiteOutputPath);
-            Console.WriteLine($"Onsite Report saved to: {onsiteOutputPath}");
+            Console.WriteLine("\nGenerating KpiMaster Excel report...");
+            excelService.GenerateReport(kpiMasterComparisonResult, kpiMasterOutputPath);
+            Console.WriteLine($"KpiMaster Report saved to: {kpiMasterOutputPath}");
+
+            // --- Quality Finding Upcoming Report ---
+            Console.WriteLine("\n--- Starting Quality Finding Upcoming Report ---");
+            var qfLookaheadDays = int.Parse(configuration["QueryParameters:QualityFindingUpcoming:LookaheadDays"] ?? "14");
+            var qfStartDate = configuration["QueryParameters:QualityFindingUpcoming:StartDate"] ?? "2025-11-27";
+            var qfEndDate = configuration["QueryParameters:QualityFindingUpcoming:EndDate"] ?? "2026-03-31";
+            var qfQuery = UpcomingReportsQueryHelper.GetQualityFindingUpcomingQuery(qfLookaheadDays, qfStartDate, qfEndDate);
+
+            Console.WriteLine("Executing Quality Finding Upcoming query on Database 1...");
+            var db1QfData = await dbService.ExecuteQueryGenericAsync<QualityFindingUpcomingData>(db1ConnectionString, qfQuery);
+
+            Console.WriteLine("Executing Quality Finding Upcoming query on Database 2...");
+            var db2QfData = await dbService.ExecuteQueryGenericAsync<QualityFindingUpcomingData>(db2ConnectionString, qfQuery);
+
+            Console.WriteLine("\nComparing Quality Finding Upcoming data...");
+            var qfComparisonResult = comparisonService.CompareData(db1QfData, db2QfData);
+
+            var qfOutputFileName = $"QualityFindingUpcomingReport_{timestamp}.xlsx";
+            var qfOutputPath = Path.Combine(reportsDir, qfOutputFileName);
+
+            Console.WriteLine("\nGenerating Quality Finding Upcoming Excel report...");
+            excelService.GenerateReport(qfComparisonResult, qfOutputPath);
+            Console.WriteLine($"Quality Finding Upcoming Report saved to: {qfOutputPath}");
+
+            // --- Manpower Planning Upcoming Report ---
+            Console.WriteLine("\n--- Starting Manpower Planning Upcoming Report ---");
+            var mpLookaheadDays = int.Parse(configuration["QueryParameters:ManpowerPlanningUpcoming:LookaheadDays"] ?? "10");
+            var mpStartDate = configuration["QueryParameters:ManpowerPlanningUpcoming:StartDate"] ?? "2025-11-27";
+            var mpEndDate = configuration["QueryParameters:ManpowerPlanningUpcoming:EndDate"] ?? "2026-05-31";
+            var mpQuery = UpcomingReportsQueryHelper.GetManpowerPlanningUpcomingQuery(mpLookaheadDays, mpStartDate, mpEndDate);
+
+            Console.WriteLine("Executing Manpower Planning Upcoming query on Database 1...");
+            var db1MpData = await dbService.ExecuteQueryGenericAsync<ManpowerPlanningUpcomingData>(db1ConnectionString, mpQuery);
+
+            Console.WriteLine("Executing Manpower Planning Upcoming query on Database 2...");
+            var db2MpData = await dbService.ExecuteQueryGenericAsync<ManpowerPlanningUpcomingData>(db2ConnectionString, mpQuery);
+
+            Console.WriteLine("\nComparing Manpower Planning Upcoming data...");
+            var mpComparisonResult = comparisonService.CompareData(db1MpData, db2MpData);
+
+            var mpOutputFileName = $"ManpowerPlanningUpcomingReport_{timestamp}.xlsx";
+            var mpOutputPath = Path.Combine(reportsDir, mpOutputFileName);
+
+            Console.WriteLine("\nGenerating Manpower Planning Upcoming Excel report...");
+            excelService.GenerateReport(mpComparisonResult, mpOutputPath);
+            Console.WriteLine($"Manpower Planning Upcoming Report saved to: {mpOutputPath}");
+
+            // --- Cost Avoidance Review Report ---
+            Console.WriteLine("\n--- Starting Cost Avoidance Review Report ---");
+            var caLookaheadDays = int.Parse(configuration["QueryParameters:CostAvoidanceReview:LookaheadDays"] ?? "5");
+            var caStartDate = configuration["QueryParameters:CostAvoidanceReview:StartDate"] ?? "2025-09-01";
+            var caEndDate = configuration["QueryParameters:CostAvoidanceReview:EndDate"] ?? "2026-03-31";
+            var caMinSavings = decimal.Parse(configuration["QueryParameters:CostAvoidanceReview:MinimumSavings"] ?? "0");
+            var caQuery = UpcomingReportsQueryHelper.GetCostAvoidanceReviewQuery(caLookaheadDays, caStartDate, caEndDate, caMinSavings);
+
+            Console.WriteLine("Executing Cost Avoidance Review query on Database 1...");
+            var db1CaData = await dbService.ExecuteQueryGenericAsync<CostAvoidanceReviewData>(db1ConnectionString, caQuery);
+
+            Console.WriteLine("Executing Cost Avoidance Review query on Database 2...");
+            var db2CaData = await dbService.ExecuteQueryGenericAsync<CostAvoidanceReviewData>(db2ConnectionString, caQuery);
+
+            Console.WriteLine("\nComparing Cost Avoidance Review data...");
+            var caComparisonResult = comparisonService.CompareData(db1CaData, db2CaData);
+
+            var caOutputFileName = $"CostAvoidanceReviewReport_{timestamp}.xlsx";
+            var caOutputPath = Path.Combine(reportsDir, caOutputFileName);
+
+            Console.WriteLine("\nGenerating Cost Avoidance Review Excel report...");
+            excelService.GenerateReport(caComparisonResult, caOutputPath);
+            Console.WriteLine($"Cost Avoidance Review Report saved to: {caOutputPath}");
+
+            // --- Card Count Report ---
+            Console.WriteLine("\n--- Starting Card Count Report ---");
+            var cardCountQuery = CardCountQueryHelper.GetQuery();
+
+            Console.WriteLine("Executing Card Count query on Database 1...");
+            var db1CardCountData = await dbService.ExecuteQueryGenericAsync<CardCountData>(db1ConnectionString, cardCountQuery);
+
+            Console.WriteLine("Executing Card Count query on Database 2...");
+            var db2CardCountData = await dbService.ExecuteQueryGenericAsync<CardCountData>(db2ConnectionString, cardCountQuery);
+
+            Console.WriteLine("\nComparing Card Count data...");
+            var cardCountComparisonResult = comparisonService.CompareData(db1CardCountData, db2CardCountData);
+
+            var cardCountOutputFileName = $"CardCountReport_{timestamp}.xlsx";
+            var cardCountOutputPath = Path.Combine(reportsDir, cardCountOutputFileName);
+
+            Console.WriteLine("\nGenerating Card Count Excel report...");
+            excelService.GenerateReport(cardCountComparisonResult, cardCountOutputPath);
+            Console.WriteLine($"Card Count Report saved to: {cardCountOutputPath}");
 
             Console.WriteLine("\n=== Process Completed Successfully ===");
             Console.WriteLine($"Work Order Report: {outputPath}");
             Console.WriteLine($"KPI Report: {kpiOutputPath}");
             Console.WriteLine($"TAT Report: {tatOutputPath}");
-            Console.WriteLine($"Onsite Report: {onsiteOutputPath}");
+            Console.WriteLine($"KpiMaster Report: {kpiMasterOutputPath}");
+            Console.WriteLine($"Quality Finding Upcoming Report: {qfOutputPath}");
+            Console.WriteLine($"Manpower Planning Upcoming Report: {mpOutputPath}");
+            Console.WriteLine($"Cost Avoidance Review Report: {caOutputPath}");
+            Console.WriteLine($"Card Count Report: {cardCountOutputPath}");
         }
         catch (Exception ex)
         {

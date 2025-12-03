@@ -73,9 +73,91 @@ Optional parameters:
 
 The application will:
 1. Connect to both databases
-2. Execute the query on each database
+2. Execute queries for all 7 reports on each database
 3. Compare the results
-4. Generate an Excel report in the current directory
+4. Generate Excel reports in the Reports directory
+
+## Report Types
+
+The application generates **7 different reports**:
+
+### 1. Work Order Report
+Comprehensive work order data including on-site information, turn-around times, task summaries, manpower data, and risk information.
+
+### 2. KPI Report
+Key Performance Indicators including work order summaries, quality metrics, TAT data, and ACORS levels.
+
+### 3. TAT (Turn-Around Time) Report
+Detailed turn-around time adjustments, responsibilities, and executable/non-executable days tracking.
+
+### 4. Onsite Report
+On-site operations data including cost avoidance, task cards, manpower hours, and TAT calculations.
+
+### 5. Quality Finding Upcoming Report (NEW!)
+**Purpose:** Track upcoming quality finding resolution deadlines with early warning alerts.
+
+**Milestones:**
+- 7 days before deadline (Week Warning)
+- 3 days before deadline (Urgent Warning)
+
+**Configuration:**
+```json
+"QualityFindingUpcoming": {
+    "LookaheadDays": 14,
+    "StartDate": "2025-11-27",
+    "EndDate": "2026-03-31"
+}
+```
+
+**Use Cases:**
+- Proactive quality issue management
+- Early warning system for approaching deadlines
+- Prioritize critical findings requiring immediate attention
+
+### 6. Manpower Planning Upcoming Report (NEW!)
+**Purpose:** Alert for upcoming manpower planning milestones before work order start dates.
+
+**Milestones:**
+- 30 days before start (Planning Start)
+- 14 days before start (Staffing Confirmation)
+- 7 days before start (Final Preparation)
+
+**Configuration:**
+```json
+"ManpowerPlanningUpcoming": {
+    "LookaheadDays": 10,
+    "StartDate": "2025-11-27",
+    "EndDate": "2026-05-31"
+}
+```
+
+**Use Cases:**
+- Resource allocation planning
+- Staffing coordination with vendors
+- Prevent last-minute staffing issues
+
+### 7. Cost Avoidance Review Report (NEW!)
+**Purpose:** Track upcoming cost avoidance review deadlines after work order completion.
+
+**Milestones:**
+- 7 days after completion (Initial Review)
+- 30 days after completion (Final Approval)
+
+**Configuration:**
+```json
+"CostAvoidanceReview": {
+    "LookaheadDays": 5,
+    "StartDate": "2025-09-01",
+    "EndDate": "2026-03-31",
+    "MinimumSavings": 0
+}
+```
+
+**Use Cases:**
+- Timely cost savings validation
+- Ensure proper documentation of savings
+- Track review deadlines for financial reporting
+
 
 ## Excel Report Structure
 
