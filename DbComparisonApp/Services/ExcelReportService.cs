@@ -259,9 +259,34 @@ public class ExcelReportService
                 // Highlight if this field differs
                 if (diff.DifferingFields.Contains(properties[i].Name))
                 {
-                    cell.Style.Fill.BackgroundColor = XLColor.Red;
-                    cell.Style.Font.Bold = true;
-                    cell.Style.Font.FontColor = XLColor.White;
+                    bool isCardCount = typeof(T).Name == "CardCountData";
+                    bool applyBlue = false;
+
+                    if (isCardCount)
+                    {
+                        var db2Value = properties[i].GetValue(diff.Db2Record);
+                        if (double.TryParse(value?.ToString(), out double db1Val) && 
+                            double.TryParse(db2Value?.ToString(), out double db2Val))
+                        {
+                            if (db1Val > db2Val)
+                            {
+                                applyBlue = true;
+                            }
+                        }
+                    }
+
+                    if (applyBlue)
+                    {
+                        cell.Style.Fill.BackgroundColor = XLColor.Blue;
+                        cell.Style.Font.Bold = true;
+                        cell.Style.Font.FontColor = XLColor.White;
+                    }
+                    else
+                    {
+                        cell.Style.Fill.BackgroundColor = XLColor.Red;
+                        cell.Style.Font.Bold = true;
+                        cell.Style.Font.FontColor = XLColor.White;
+                    }
                 }
                 else
                 {
@@ -284,9 +309,34 @@ public class ExcelReportService
                 // Highlight if this field differs
                 if (diff.DifferingFields.Contains(properties[i].Name))
                 {
-                    cell.Style.Fill.BackgroundColor = XLColor.Orange;
-                    cell.Style.Font.Bold = true;
-                    cell.Style.Font.FontColor = XLColor.White;
+                    bool isCardCount = typeof(T).Name == "CardCountData";
+                    bool applyBlue = false;
+
+                    if (isCardCount)
+                    {
+                        var db1Value = properties[i].GetValue(diff.Db1Record);
+                        if (double.TryParse(db1Value?.ToString(), out double db1Val) && 
+                            double.TryParse(value?.ToString(), out double db2Val))
+                        {
+                            if (db1Val > db2Val)
+                            {
+                                applyBlue = true;
+                            }
+                        }
+                    }
+
+                    if (applyBlue)
+                    {
+                        cell.Style.Fill.BackgroundColor = XLColor.Blue;
+                        cell.Style.Font.Bold = true;
+                        cell.Style.Font.FontColor = XLColor.White;
+                    }
+                    else
+                    {
+                        cell.Style.Fill.BackgroundColor = XLColor.Orange;
+                        cell.Style.Font.Bold = true;
+                        cell.Style.Font.FontColor = XLColor.White;
+                    }
                 }
                 else
                 {

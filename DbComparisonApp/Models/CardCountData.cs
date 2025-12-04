@@ -31,6 +31,14 @@ public class CardCountData : IReportData
     [CompareIgnore]
     public DateTime? RecordModifiedAt { get; set; }
 
+    [Column("ScheduleStartDate")]
+    [CompareIgnore]
+    public DateTime? ScheduleStartDate { get; set; }
+
+    [Column("ActualStartDate")]
+    [CompareIgnore]
+    public DateTime? ActualStartDate { get; set; }
+
     public string GetUniqueKey()
     {
         return WorkOrderNumber;
